@@ -17,7 +17,7 @@
 <br>
  
 ## 📆 진행 기간
-- 2023. 9. 25 ~ 2023. 10. 23
+- 2023.09.25 ~ 2023.10.23
 
 <br>
 
@@ -56,143 +56,65 @@
 
 ## 🖥️ Front-End
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-<img src="https://img.shields.io/badge/WebRTC-333333?style=for-the-badge&logo=&logoColor=white">
-
-<br>
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=for-the-badge&logo=&logoColor=white)
 
 ## 🖥 Back-End
 
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white">
-<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 
-<img src="https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white">
-<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
-<img src="https://img.shields.io/badge/Channels-37814A?style=for-the-badge&logo=channels&logoColor=white">
-
-<br>
+![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![Channels](https://img.shields.io/badge/Channels-37814A?style=for-the-badge&logo=channels&logoColor=white)
 
 ## 🌎 Infra
 
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
-<img src="https://img.shields.io/badge/Helm-277A9F?style=for-the-badge&logo=helm&logoColor=white">
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Helm](https://img.shields.io/badge/Helm-277A9F?style=for-the-badge&logo=helm&logoColor=white)
 
-<img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white">
-<img src="https://img.shields.io/badge/ArgoCD-2733CC?style=for-the-badge&logo=argo&logoColor=white">
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![ArgoCD](https://img.shields.io/badge/ArgoCD-2733CC?style=for-the-badge&logo=argo&logoColor=white)
 
-<img src="https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white">
-<img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white">
-<img src="https://img.shields.io/badge/NCloud-03C75A?style=for-the-badge&logo=naver&logoColor=white">
+![Terraform](https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![NCloud](https://img.shields.io/badge/NCloud-03C75A?style=for-the-badge&logo=naver&logoColor=white)
 
-<br>
+## 🔍 Monitoring
 
-## 🔍 monitoring
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 
-<img src="https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white">
-<img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white">
 
 <br>
 
 ## 📑 Installed Package
 
-<table>
-  <tr style="background-color: #D9F0F1">
-    <th>Package</th>
-    <th>Required Ver.</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Django</td>
-    <td>4.2.5</td>
-    <td>Web Framework</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-taggit</td>
-    <td>4.0.0</td>
-    <td>태그 추가/생성/관리</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">gunicorn</td>
-    <td>21.2.0</td>
-    <td>Web Server Gateway Interface</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">psycopg2-binary</td>
-    <td>2.9.7</td>
-    <td>PostgreSQL 연결</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-markdownx</td>
-    <td>4.0.2</td>
-    <td>마크다운 텍스트 지원</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Pygments</td>
-    <td>2.16.1</td>
-    <td>문법 하이라이팅 및 코드 스타일링</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">boto3</td>
-    <td>1.28.57</td>
-    <td>AWS S3 서비스 아용</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-storages</td>
-    <td>1.14.1</td>
-    <td>파일 스토리지 관리 (AWS S3)</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">python-dotenv</td>
-    <td>1.0.0</td>
-    <td>환경 변수 관리 및 설정</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-allauth</td>
-    <td>0.57.0</td>
-    <td>사용자 인증 및 계정 관리(Social Login)</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">channels[daphne]</td>
-    <td>4.0.0</td>
-    <td>실시간 웹 소켓 및 비동기 처리</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">channels-redis</td>
-    <td>4.1.0</td>
-    <td>Redis를 통한 Django 채널 관리</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-redis</td>
-    <td>5.4.0</td>
-    <td>Redis 데이터베이스 연동</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-redisboard</td>
-    <td>8.4.0</td>
-    <td>Django 애플리케이션의 Redis 모니터링</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">uvicorn[standard]</td>
-    <td>0.23.2</td>
-    <td>ASGI 서버 (예: 웹 소켓 지원)</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-debug-toolbar</td>
-    <td>4.2.0</td>
-    <td>디버깅 및 성능 모니터링 도구</td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">django-prometheus</td>
-    <td>2.3.1</td>
-    <td>모니터링 및 지표 수집</td>
-  </tr>
-</table>
+| Package                    | Required Ver. | Purpose                      |
+|----------------------------|---------------|------------------------------|
+| **`Django`**               | 4.2.5         | Web Framework                |
+| **`django-taggit`**        | 4.0.0         | 태그 추가/생성/관리                  |
+| **`gunicorn`**             | 21.2.0        | Web Server Gateway Interface |
+| **`psycopg2-binary`**      | 2.9.7         | PostgreSQL 연결                |
+| **`django-markdownx`**     | 4.0.2         | 마크다운 텍스트 지원                  |
+| **`Pygments`**             | 2.16.1        | 문법 하이라이팅 및 코드 스타일링           |
+| **`boto3`**                | 1.28.57       | AWS S3 서비스 아용                |
+| **`django-storages`**      | 1.14.1        | 파일 스토리지 관리 (AWS S3)          |
+| **`python-dotenv`**        | 1.0.0         | 환경 변수 관리 및 설정                |
+| **`django-allauth`**       | 0.57.0        | 사용자 인증 및 계정 관리(Social Login) |
+| **`channels[daphne]`**     | 4.0.0         | 실시간 웹 소켓 및 비동기 처리            |
+| **`channels-redis`**       | 4.1.0         | Redis를 통한 Django 채널 관리       |
+| **`django-redis`**         | 5.4.0         | Redis 데이터베이스 연동              |
+| **`django-redisboard`**    | 8.4.0         | Django 애플리케이션의 Redis 모니터링    |
+| **`uvicorn[standard]`**    | 0.23.2        | ASGI 서버 (예: 웹 소켓 지원)         |
+| **`django-debug-toolbar`** | 4.2.0         | 디버깅 및 성능 모니터링 도구             |
+| **`django-prometheus`**    | 2.3.1         | 모니터링 및 지표 수집                 |
 
 <br>
 <br>
@@ -374,7 +296,7 @@
 # 👨‍💻 설치 가이드
 
 <details>
-<summary style="font-size: 18px; font-weight: bold;">펼치기/접기</summary>
+<summary><strong>펼치기 / 접기</strong></summary>
 <div markdown="1">
 
 <br>
