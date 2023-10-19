@@ -213,6 +213,7 @@
 ## 1️⃣ 로그인 & 로그아웃 & 회원가입
 
 - 사용자는 중복하지 않는 아이디, 이름과 비밀번호를 이용하여 계정을 생성하고 로그인/로그아웃 할 수 있습니다.
+- google, naver, github 을 이용해 로그인을 할 수 있다.
 
 ## 2️⃣ 스터디 모집
 
@@ -252,6 +253,12 @@
 
 - 팀장이 사용자가 참가 신청한 모집글에 신청 확인을 하면 실시간 알림이 뜹니다.
 - 멤버로 있는 스터디의 상태가 변경되면 실시간 알림이 뜹니다.
+- 멤버로 있는 스터디의 스터디원이 탈퇴하면 알림이 뜹니다.
+- 메세지 수신 시 알림이 뜹니다.
+
+## 5️⃣ 메세지
+
+- 참여한 스터디의 멤버들과 메세지를 주고 받을 수 있다.
 
 <br>
 
@@ -287,7 +294,53 @@
 
 # 🔧 기술적 이슈 및 해결 과정
 
-- 작성 예정
+- 새로운 알림 및 메세지 유무 표시
+    - 확인 후 삭제하지 않은 알림이나 새로운 수신 메세지가 있을 경우 네비게이션 탭에서 빨간색 점으로 표시하기 위해 모든 페이지에서 표시가 되어야 한다.
+    - message/context_processor.py
+        ```
+        from .models import Message, Notice
+
+
+        def get_recent_message(request):
+            if request.user.is_authenticated:
+                recent_message = Message.objects.filter(reciever=request.user).first()
+                return {"recent_message": recent_message}
+            else:
+                recent_message = None
+                return {"recent_message": recent_message}
+
+
+        def get_recent_notice(request):
+            if request.user.is_authenticated:
+                recent_notice = Notice.objects.filter(user=request.user).first()
+                return {"recent_notice": recent_notice}
+            else:
+                recent_notice = None
+                return {"recent_notice": recent_notice}
+        ```
+    - config/settings/base.py
+        ```
+        TEMPLATES = [
+            {
+                "BACKEND": "django.template.backends.django.DjangoTemplates",
+                "DIRS": [os.path.join(BASE_DIR, "templates")],
+                "APP_DIRS": True,
+                "OPTIONS": {
+                    "context_processors": [
+                        "django.template.context_processors.debug",
+                        "django.template.context_processors.request",
+                        "django.contrib.auth.context_processors.auth",
+                        "django.contrib.messages.context_processors.messages",
+                        "django.template.context_processors.request",
+                        "message.context_processors.get_recent_message",
+                        "message.context_processors.get_recent_notice",
+                    ],
+                },
+            },
+        ]
+        ```
+    - 모든 페이지에 적용시키기 위해 `base.html`에 표시되도록 작성
+    - 모든 페이지에서 사용해야 하기 때문에 전역변수로 설정해서 객체 호출
 
 
 <br>
