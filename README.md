@@ -17,6 +17,7 @@
 <br>
  
 ## 📆 진행 기간
+
 - 2023.09.25 ~ 2023.10.23
 
 <br>
@@ -76,6 +77,7 @@
 ![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Channels](https://img.shields.io/badge/Channels-37814A?style=for-the-badge&logo=channels&logoColor=white)
+![Flower](https://img.shields.io/badge/Flower-00CC66?style=for-the-badge&logo=Flower&logoColor=white)
 
 ## 🌎 Infra
 
@@ -94,7 +96,6 @@
 
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
-
 
 <br>
 
@@ -119,6 +120,11 @@
 | **`uvicorn[standard]`**    | 0.23.2        | ASGI 서버 (예: 웹 소켓 지원)         |
 | **`django-debug-toolbar`** | 4.2.0         | 디버깅 및 성능 모니터링 도구             |
 | **`django-prometheus`**    | 2.3.1         | 모니터링 및 지표 수집                 |
+| **`celery`**    | 5.3.4         | 비동기 작업 큐 시스템   |
+| **`django-celery-beat`**    | 2.5.0         | 주기적인 작업 스케줄링  |
+| **`django-celery-results`**    | 2.5.1         | Celery 작업 결과 저장  |
+| **`flower`**    | 2.0.1         | Celery 모니터링 도구 |
+
 
 <br>
 <br>
@@ -298,75 +304,124 @@
 
 # 🔧 기술적 이슈 및 해결 과정
 
-- 새로운 알림 및 메세지 유무 표시
-    - 확인 후 삭제하지 않은 알림이나 새로운 수신 메세지가 있을 경우 네비게이션 탭에서 빨간색 점으로 표시하기 위해 모든 페이지에서 표시가 되어야 한다.
-    - message/context_processor.py
-        ```
-        from .models import Message, Notice
+## 새로운 알림 및 메세지 유무 표시
+
+- 확인 후 삭제하지 않은 알림이나 새로운 수신 메세지가 있을 경우 네비게이션 탭에서 빨간색 점으로 표시하기 위해 모든 페이지에서 표시가 되어야 한다.
+    
+    - `message/context_processor.py`
+    ```python
+    from .models import Message, Notice
 
 
-        def get_recent_message(request):
-            if request.user.is_authenticated:
-                recent_message = Message.objects.filter(reciever=request.user).first()
-                return {"recent_message": recent_message}
-            else:
-                recent_message = None
-                return {"recent_message": recent_message}
+    def get_recent_message(request):
+        if request.user.is_authenticated:
+            recent_message = Message.objects.filter(reciever=request.user).first()
+            return {"recent_message": recent_message}
+        else:
+            recent_message = None
+            return {"recent_message": recent_message}
 
 
-        def get_recent_notice(request):
-            if request.user.is_authenticated:
-                recent_notice = Notice.objects.filter(user=request.user).first()
-                return {"recent_notice": recent_notice}
-            else:
-                recent_notice = None
-                return {"recent_notice": recent_notice}
-        ```
-    - config/settings/base.py
-        ```
-        TEMPLATES = [
-            {
-                "BACKEND": "django.template.backends.django.DjangoTemplates",
-                "DIRS": [os.path.join(BASE_DIR, "templates")],
-                "APP_DIRS": True,
-                "OPTIONS": {
-                    "context_processors": [
-                        "django.template.context_processors.debug",
-                        "django.template.context_processors.request",
-                        "django.contrib.auth.context_processors.auth",
-                        "django.contrib.messages.context_processors.messages",
-                        "django.template.context_processors.request",
-                        "message.context_processors.get_recent_message",
-                        "message.context_processors.get_recent_notice",
-                    ],
-                },
+    def get_recent_notice(request):
+        if request.user.is_authenticated:
+            recent_notice = Notice.objects.filter(user=request.user).first()
+            return {"recent_notice": recent_notice}
+        else:
+            recent_notice = None
+            return {"recent_notice": recent_notice}
+    ```
+
+    - `config/settings/base.py`
+    ```python
+    TEMPLATES = [
+        {
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "DIRS": [os.path.join(BASE_DIR, "templates")],
+            "APP_DIRS": True,
+            "OPTIONS": {
+                "context_processors": [
+                    "django.template.context_processors.debug",
+                    "django.template.context_processors.request",
+                    "django.contrib.auth.context_processors.auth",
+                    "django.contrib.messages.context_processors.messages",
+                    "django.template.context_processors.request",
+                    "message.context_processors.get_recent_message",
+                    "message.context_processors.get_recent_notice",
+                ],
             },
-        ]
-        ```
-    - 모든 페이지에 적용시키기 위해 `base.html`에 표시되도록 작성
-    - 모든 페이지에서 사용해야 하기 때문에 전역변수로 설정해서 객체 호출
+        },
+    ]
+    ```
+- 모든 페이지에 적용시키기 위해 `base.html`에 표시되도록 작성
+- 모든 페이지에서 사용해야 하기 때문에 전역변수로 설정해서 객체 호출
 
 
-* 비밀 번호 검증 기능
-  * 회원 가입폼을 따로 만들어서 회원 가입을 하기 때문에 비밀번호를 검증하는 기능이 필요했다.
-  * user/forms.py
-  ```
-  class SignupForm(models.ModelForm):
-        # .. 생략 ..
-        
-        def clean_password_check(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        password_check = cleaned_data.get("password_check")
+## 비밀 번호 검증 기능
+  - 회원 가입폼을 따로 만들어서 회원 가입을 하기 때문에 비밀번호를 검증하는 기능이 필요했다.
+    - `user/forms.py`
+    ```python
+    class SignupForm(models.ModelForm):
+            # .. 생략 ..
+            
+            def clean_password_check(self):
+            cleaned_data = super().clean()
+            password = cleaned_data.get("password")
+            password_check = cleaned_data.get("password_check")
 
-        if password != password_check:
-            raise forms.ValidationError("비밀번호와 비밀번호 확인이 같지않습니다.")
+            if password != password_check:
+                raise forms.ValidationError("비밀번호와 비밀번호 확인이 같지않습니다.")
 
-        validate_password(password)
+            validate_password(password)
 
-        return password_check
-  ```
-  * Django의 비밀번호 검증 기능을 하는 validate_password()메서드를 사용하여 강력한 비밀번호를 만들게 했습니다.
+            return password_check
+    ```
+        - Django의 비밀번호 검증 기능을 하는 validate_password()메서드를 사용하여 강력한 비밀번호를 만들게 했습니다.
+
+
+## NCloud Object Storage를 통한 파일 서버 구축
+  - 게시판에 글 작성 시, 첨부 파일을 Object Storage의 지정된 버킷에 업로드하도록 구현
+  - 게시글 확인 페이지 템플릿에서 `a` 태그 내에 `download` 속성을 추가하여 작성된 게시글 내에서 첨부 파일명 클릭 시 파일이 다운로드될 것으로 기대함
+    ```html
+        <!-- .. 생략 .. -->
+            {% if post.files.exists %}
+                <div class="w-4/5 xl:w-5/6 lg:w-11/12 file-wrap">
+                    <div class="mt-5 text-2xl font-bold title">첨부파일</div>
+                    <hr class="my-2">
+                    <div class="flex flex-col mb-20 content sm:flex-row">
+                        {% for file in post.files.all %}
+                            <a href="{% url 'manager:download_s3_file' file.id %}"
+                            class="my-1 mr-4 text-xs underline text-real-blue hover:font-bold"
+                            title="파일 다운로드"
+                            download>{{ file.get_file_name }}</a>  <!-- download 속성 추가 -->
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        <!-- .. 생략 .. -->
+    ```
+    - 그러나, 파일명 클릭 시, 파일이 브라우저 내에서 로드될 뿐, 다운로드되지 않는 현상 발생
+  - 멘토링을 통해 해결 방안에 대해 조언을 구함
+- boto3 공식 문서를 통해 `get_object` 메서드를 이용하면 bucket에 저장된 파일의 내용을 가져올 수 있음을 확인
+- 파일을 현재 서버로 로드하여 `HttpResponse`로 `return`하는 파일 다운로드 기능을 구현을 진행
+    ```python
+        def s3_file_download(file_id):
+
+            # .. 생략 ..
+
+            s3_file_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+            file_body = s3_file_object.get("Body")
+            content_type = s3_file_object.get("ContentType")
+
+            response = HttpResponse(file_body, content_type=content_type)
+
+            encoded_filename = quote(file.name)
+            response[
+                "Content-Disposition"
+            ] = f'attachment; filename="{encoded_filename}.{file.url.split(".")[-1]}"'
+
+            return response
+    ```
+    
 
 
 
