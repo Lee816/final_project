@@ -77,7 +77,7 @@
 ![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![Channels](https://img.shields.io/badge/Channels-37814A?style=for-the-badge&logo=channels&logoColor=white)
-![Flower](https://img.shields.io/badge/Flower-00CC66?style=for-the-badge&logo=Flower&logoColor=white)
+![Flower](https://img.shields.io/badge/Flower-46A45E?style=for-the-badge&logo=Flower&logoColor=white)
 
 ## 🌎 Infra
 
@@ -103,6 +103,7 @@
 
 | Package                    | Required Ver. | Purpose                      |
 |----------------------------|---------------|------------------------------|
+| **`Python`**               | 3.11.0        | Programming Language                |
 | **`Django`**               | 4.2.5         | Web Framework                |
 | **`django-taggit`**        | 4.0.0         | 태그 추가/생성/관리                  |
 | **`gunicorn`**             | 21.2.0        | Web Server Gateway Interface |
