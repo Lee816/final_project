@@ -143,7 +143,7 @@
 
 # 🚩 Flowchart
 
-![Bottom](./static/image/README/flowchart.png)
+![Bottom](./static/image/README/flowchart_v2.png)
 
 <br>
 <br>
