@@ -183,6 +183,12 @@
 ![FlowChart](./static/image/README/flowchart_v2.png)
 
 <br>
+
+# 🔖 URL Statement
+
+![URL Statement](./static/image/README/URL_Statement.png)
+
+<br>
 <br>
 
 # 🚀 프로젝트 목표 및 방향성
