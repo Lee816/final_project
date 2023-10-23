@@ -174,7 +174,7 @@
 
 # 🗃️ ERD
 
-![ERD](./static/image/README/erd.png)
+![ERD](./static/image/README/StudyOn.png)
 
 <br>
 
